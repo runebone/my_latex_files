@@ -1,0 +1,120 @@
+% No \part divisions, but has got \chapter divisions, unlike article
+\documentclass[11pt]{report}
+
+% Make all margins 1 inch
+\usepackage{anysize}
+\marginsize{1in}{1in}{1in}{1in}
+
+% Localization
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Font configuration
+\usepackage{fontspec}
+\setmainfont{Liberation Serif} % ~ Times New Roman
+\setsansfont{Liberation Sans} % ~ Arial
+\setmonofont{Liberation Mono} % ~ Courier New
+
+% Fancy verbatim, headers and footers
+\usepackage{fancyvrb, fancyhdr}
+\pagestyle{fancy}
+
+% Math packages
+\usepackage{amsmath, amsthm, amsfonts}
+
+% Define custom theorem environments
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{definition}{Определение}[section]
+\newtheorem{example}{Пример}[section]
+\newtheorem{lemma}{Лемма}[section] % = numbering within = section
+
+% Display images (with includegraphics)
+\usepackage{graphicx}
+
+% Define custom colors
+\usepackage{xcolor}
+
+\definecolor{my-red}{HTML}{FF90AE}
+\definecolor{my-blue}{HTML}{90AEFF}
+\definecolor{my-green}{HTML}{90FFE1}
+\definecolor{my-yellow}{HTML}{FFE190}
+
+% Tcolorboxes for theorems etc
+\usepackage{tcolorbox}
+
+% Default tcolorbox configuration
+\tcbset{
+    coltitle=white,
+    colback=blue!5!white,
+    colframe=blue!50!black,
+    boxrule=0.1mm,
+    boxsep=1.0mm,
+    left=4.0mm,
+    right=4.0mm,
+    top=2.0mm,
+    bottom=2.0mm,
+    toptitle=0.0mm,
+    bottomtitle=0.0mm,
+    middle=2.0mm,
+    arc=0.0mm,
+    outer arc=0.0mm,
+    fonttitle=\bfseries,
+}
+
+% Define custom tcolorboxes
+\newtcolorbox{rbox}{
+    colback=my-red!20!white,
+    colframe=white,
+}
+\newtcolorbox{bbox}{
+    colback=my-blue!20!white,
+    colframe=white,
+}
+\newtcolorbox{gbox}{
+    colback=my-green!20!white,
+    colframe=white,
+}
+\newtcolorbox{ybox}{
+    colback=my-yellow!20!white,
+    colframe=white,
+}
+
+% Define custom environments for theorems, definitions etc
+\newenvironment{thbox}[1][]
+{
+    \begin{rbox}
+        \begin{theorem}[#1]
+}
+{
+        \end{theorem}
+    \end{rbox}
+}
+\newenvironment{defbox}[1][]
+{
+    \begin{gbox}
+        \begin{definition}[#1]
+}
+{
+        \end{definition}
+    \end{gbox}
+}
+\newenvironment{exbox}
+{
+    \begin{bbox}
+        \begin{example}
+}
+{
+        \end{example}
+    \end{bbox}
+}
+
+% Other packages
+\usepackage{blindtext} % lorem ipsum
+\usepackage{multicol} % new environment: begin{multicols}{n}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}

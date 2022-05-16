@@ -28,6 +28,7 @@
 \newtheorem{definition}{Определение}[section]
 \newtheorem{example}{Пример}[section]
 \newtheorem{lemma}{Лемма}[section] % = numbering within = section
+\newtheorem*{note}{Заметка}
 
 % Display images (with includegraphics)
 \usepackage{graphicx}
@@ -107,6 +108,24 @@
 {
         \end{example}
     \end{bbox}
+}
+\newenvironment{lembox}[1][]
+{
+    \begin{ybox}
+        \begin{lemma}[#1]
+}
+{
+        \end{lemma}
+    \end{ybox}
+}
+\newenvironment{notebox}[1][]
+{
+    \begin{ybox}
+        \begin{note}[#1]
+}
+{
+        \end{note}
+    \end{ybox}
 }
 
 % Other packages
